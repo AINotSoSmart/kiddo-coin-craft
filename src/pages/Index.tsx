@@ -4,6 +4,7 @@ import BalanceCard from "@/components/dashboard/BalanceCard";
 import GoalsPreview from "@/components/dashboard/GoalsPreview";
 import TaskList from "@/components/dashboard/TaskList";
 import StorePreview from "@/components/dashboard/StorePreview";
+import WeeklyChallenges from "@/components/dashboard/WeeklyChallenges";
 import { useBudget } from "@/context/BudgetContext";
 
 const Index = () => {
@@ -21,6 +22,7 @@ const Index = () => {
           <BalanceCard />
           <GoalsPreview />
           <TaskList />
+          <WeeklyChallenges />
           <StorePreview />
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -27,12 +26,25 @@ export interface Task {
   completed: boolean;
 }
 
+export interface Challenge {
+  id: string;
+  name: string;
+  description: string;
+  reward: number;
+  targetAmount: number;
+  currentAmount: number;
+  type: 'save' | 'spend' | 'task';
+  deadline: string; // ISO date string
+  completed: boolean;
+}
+
 export interface BudgetContextType {
   balance: number;
   weeklyAllowance: number;
   savingsGoals: SavingsGoal[];
   storeItems: StoreItem[];
   tasks: Task[];
+  challenges: Challenge[];
   ownedItems: string[];
   addBalance: (amount: number) => void;
   subtractBalance: (amount: number) => void;
@@ -43,6 +55,8 @@ export interface BudgetContextType {
   completeTask: (taskId: string) => void;
   resetTask: (taskId: string) => void;
   isItemOwned: (itemId: string) => boolean;
+  updateChallengeProgress: (challengeId: string, amount: number) => void;
+  completeChallenge: (challengeId: string) => void;
 }
 
 const BudgetContext = createContext<BudgetContextType | undefined>(undefined);
@@ -146,6 +160,43 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
   ]);
   
   const [ownedItems, setOwnedItems] = useState<string[]>([]);
+  
+  // Initialize weekly challenges
+  const [challenges, setChallenges] = useState<Challenge[]>([
+    {
+      id: 'c1',
+      name: 'Save 50 Coins',
+      description: 'Save 50 coins this week to get a special reward!',
+      reward: 25,
+      targetAmount: 50,
+      currentAmount: 0,
+      type: 'save',
+      deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days from now
+      completed: false
+    },
+    {
+      id: 'c2',
+      name: 'Complete All Tasks',
+      description: 'Finish all your tasks this week for a bonus!',
+      reward: 30,
+      targetAmount: tasks.length,
+      currentAmount: 0,
+      type: 'task',
+      deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+      completed: false
+    },
+    {
+      id: 'c3',
+      name: 'Shopping Spree',
+      description: 'Buy at least 1 item from the store this week',
+      reward: 15,
+      targetAmount: 1,
+      currentAmount: 0,
+      type: 'spend',
+      deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+      completed: false
+    }
+  ]);
 
   // Add to balance
   const addBalance = (amount: number) => {
@@ -154,6 +205,13 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       title: "Money Added!",
       description: `You've added ${amount} coins to your balance.`,
       variant: "default",
+    });
+    
+    // Update save challenge progress
+    challenges.forEach(challenge => {
+      if (challenge.type === 'save' && !challenge.completed) {
+        updateChallengeProgress(challenge.id, amount);
+      }
     });
   };
 
@@ -222,6 +280,13 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
     );
     
     subtractBalance(amount);
+    
+    // Update save challenge progress
+    challenges.forEach(challenge => {
+      if (challenge.type === 'save' && !challenge.completed) {
+        updateChallengeProgress(challenge.id, amount);
+      }
+    });
   };
 
   // Remove a savings goal
@@ -255,6 +320,14 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
         title: "Purchase Complete!",
         description: `You now own ${item.name}!`,
       });
+      
+      // Update spend challenge progress
+      challenges.forEach(challenge => {
+        if (challenge.type === 'spend' && !challenge.completed) {
+          updateChallengeProgress(challenge.id, 1);
+        }
+      });
+      
       return true;
     } else {
       toast({
@@ -280,6 +353,54 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
         title: "Task Completed!",
         description: `You earned ${task.reward} coins for completing "${task.name}".`,
       });
+      
+      // Update task challenge progress
+      challenges.forEach(challenge => {
+        if (challenge.type === 'task' && !challenge.completed) {
+          updateChallengeProgress(challenge.id, 1);
+        }
+      });
+    }
+  };
+
+  // Update challenge progress
+  const updateChallengeProgress = (challengeId: string, amount: number) => {
+    setChallenges(prev => 
+      prev.map(challenge => {
+        if (challenge.id === challengeId && !challenge.completed) {
+          const newAmount = challenge.currentAmount + amount;
+          const updatedChallenge = { 
+            ...challenge, 
+            currentAmount: Math.min(newAmount, challenge.targetAmount)
+          };
+          
+          // Check if challenge is now completed
+          if (updatedChallenge.currentAmount >= updatedChallenge.targetAmount) {
+            // We'll mark it as completed but we'll actually complete it through the completeChallenge function
+            // This is to ensure the reward is only given once
+          }
+          
+          return updatedChallenge;
+        }
+        return challenge;
+      })
+    );
+  };
+  
+  // Complete a challenge and give reward
+  const completeChallenge = (challengeId: string) => {
+    const challenge = challenges.find(c => c.id === challengeId);
+    
+    if (challenge && !challenge.completed && challenge.currentAmount >= challenge.targetAmount) {
+      setChallenges(prev => 
+        prev.map(c => c.id === challengeId ? { ...c, completed: true } : c)
+      );
+      
+      addBalance(challenge.reward);
+      toast({
+        title: "Challenge Completed! 🎉",
+        description: `You earned ${challenge.reward} coins for completing "${challenge.name}"!`,
+      });
     }
   };
 
@@ -303,6 +424,7 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
         savingsGoals,
         storeItems,
         tasks,
+        challenges,
         ownedItems,
         addBalance,
         subtractBalance,
@@ -313,6 +435,8 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
         completeTask,
         resetTask,
         isItemOwned,
+        updateChallengeProgress,
+        completeChallenge,
       }}
     >
       {children}

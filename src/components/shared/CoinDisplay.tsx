@@ -14,9 +14,9 @@ const CoinDisplay = ({ amount, size = "md" }: CoinDisplayProps) => {
   };
 
   return (
-    <div className={`kid-coin ${sizeClasses[size]}`}>
+    <div className={`kid-coin flex items-center gap-1 ${sizeClasses[size]}`}>
       <Coins className="text-kid-yellow" size={size === "lg" ? 24 : size === "md" ? 20 : 16} />
-      <span>{amount}</span>
+      <span className="font-medium">{amount}</span>
     </div>
   );
 };
