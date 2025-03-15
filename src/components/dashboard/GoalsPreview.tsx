@@ -1,0 +1,59 @@
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Target } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import CoinDisplay from "../shared/CoinDisplay";
+import { useBudget } from "@/context/BudgetContext";
+import { Link } from "react-router-dom";
+
+const GoalsPreview = () => {
+  const { savingsGoals } = useBudget();
+
+  return (
+    <Card className="overflow-hidden border-2 border-kid-teal/20">
+      <CardHeader className="bg-gradient-to-r from-kid-teal to-kid-blue p-6">
+        <CardTitle className="flex items-center justify-between text-white">
+          <div className="flex items-center gap-2">
+            <Target className="h-6 w-6" />
+            Savings Goals
+          </div>
+          <Button variant="secondary" size="sm" asChild>
+            <Link to="/goals">View All</Link>
+          </Button>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="p-6 space-y-4">
+        {savingsGoals.length === 0 ? (
+          <div className="text-center p-6">
+            <p className="text-muted-foreground">No savings goals yet.</p>
+            <Button className="mt-4" asChild>
+              <Link to="/goals">Create a Goal</Link>
+            </Button>
+          </div>
+        ) : (
+          savingsGoals.slice(0, 2).map((goal) => (
+            <div key={goal.id} className="space-y-2">
+              <div className="flex items-center justify-between">
+                <h3 className="font-medium">{goal.name}</h3>
+                <CoinDisplay amount={goal.currentAmount} size="sm" />
+              </div>
+              <Progress 
+                value={(goal.currentAmount / goal.targetAmount) * 100} 
+                className="h-2 bg-muted"
+              />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>
+                  {Math.round((goal.currentAmount / goal.targetAmount) * 100)}% complete
+                </span>
+                <span>Target: <CoinDisplay amount={goal.targetAmount} size="sm" /></span>
+              </div>
+            </div>
+          ))
+        )}
+      </CardContent>
+    </Card>
+  );
+};
+
+export default GoalsPreview;
