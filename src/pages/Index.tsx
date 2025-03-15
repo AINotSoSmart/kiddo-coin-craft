@@ -6,7 +6,7 @@ import TaskList from "@/components/dashboard/TaskList";
 import StorePreview from "@/components/dashboard/StorePreview";
 import WeeklyChallenges from "@/components/dashboard/WeeklyChallenges";
 import { useBudget } from "@/context/BudgetContext";
-import { Party } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const Index = () => {
   const { balance } = useBudget();
@@ -16,7 +16,7 @@ const Index = () => {
       <div className="py-8">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold mb-2 flex items-center justify-center gap-2">
-            <Party className="h-7 w-7 text-kid-yellow animate-jiggle" />
+            <Sparkles className="h-7 w-7 text-kid-yellow animate-jiggle" />
             <span className="bg-gradient-to-r from-kid-purple to-kid-blue bg-clip-text text-transparent">
               Welcome Back!
             </span>

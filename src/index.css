@@ -105,7 +105,7 @@
 }
 
 .card-gradient-purple {
-  @apply bg-gradient.to-br from-kid-purple/90 to-kid-purple/70 text-white;
+  @apply bg-gradient-to-br from-kid-purple/90 to-kid-purple/70 text-white;
 }
 
 .card-gradient-teal {
