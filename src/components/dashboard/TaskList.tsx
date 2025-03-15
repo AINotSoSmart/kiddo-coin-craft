@@ -39,25 +39,25 @@ const TaskList = () => {
   return (
     <>
       <Confetti show={showConfetti} />
-      <Card className="overflow-hidden border-2 border-white/30 glass-card">
-        <CardHeader className="bg-gradient-to-r from-kid-orange to-kid-yellow p-6">
-          <CardTitle className="flex items-center gap-2 text-white">
+      <Card className="overflow-hidden border-2 border-black border-dashed bg-white">
+        <CardHeader className="bg-[#F0E6FF] p-5 border-b-2 border-black border-dashed">
+          <CardTitle className="flex items-center gap-2 text-black font-normal" style={{ fontFamily: "'Comic Sans MS', cursive" }}>
             <ListChecks className="h-6 w-6" />
-            Complete Tasks, Earn Coins!
+            <span className="text-xl" style={{ transform: "rotate(-2deg)" }}>Complete Tasks, Earn Coins!</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6 space-y-4">
           {incompleteTasks.length === 0 ? (
             <div className="text-center p-6">
               <Trophy className="h-16 w-16 mx-auto text-kid-yellow mb-2 animate-float" />
-              <p className="text-muted-foreground">All tasks completed! Check back later for more.</p>
+              <p className="text-black text-sm" style={{ fontFamily: "'Comic Sans MS', cursive" }}>All tasks completed! Check back later for more.</p>
             </div>
           ) : (
             <div className="space-y-5">
               {['easy', 'medium', 'hard'].map(difficulty => 
                 groupedTasks[difficulty] && (
                   <div key={difficulty} className="space-y-2">
-                    <h3 className="text-sm font-medium flex items-center gap-1.5">
+                    <h3 className="text-sm font-medium flex items-center gap-1.5" style={{ fontFamily: "'Comic Sans MS', cursive" }}>
                       {difficulty === 'easy' && <Star className="h-4 w-4 text-kid-green" />}
                       {difficulty === 'medium' && <Star className="h-4 w-4 text-kid-blue" />}
                       {difficulty === 'hard' && <Star className="h-4 w-4 text-kid-purple" />}
@@ -69,8 +69,8 @@ const TaskList = () => {
                         key={task.id} 
                         className={`flex items-center justify-between p-3 rounded-lg transition-all duration-300
                           ${completedTaskId === task.id 
-                            ? 'bg-green-50 border border-green-200 shadow-md' 
-                            : 'bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/70'
+                            ? 'bg-green-50 border-2 border-black border-dashed shadow-md' 
+                            : 'bg-white/50 backdrop-blur-sm border-2 border-black border-dashed hover:bg-white/70'
                           }`}
                       >
                         <div className="flex items-center gap-3">
@@ -81,7 +81,7 @@ const TaskList = () => {
                               ${difficulty === 'easy' ? 'text-kid-green' : 
                                 difficulty === 'medium' ? 'text-kid-blue' : 'text-kid-purple'}`} />
                           </div>
-                          <span className="font-medium">{task.name}</span>
+                          <span className="font-medium" style={{ fontFamily: "'Comic Sans MS', cursive" }}>{task.name}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <CoinDisplay amount={task.reward} size="sm" />

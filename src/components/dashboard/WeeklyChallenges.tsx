@@ -24,29 +24,30 @@ const WeeklyChallenges = () => {
   const completedChallenges = challenges.filter(challenge => challenge.completed);
 
   return (
-    <Card className="overflow-hidden border-2 border-kid-orange/20">
-      <CardHeader className="bg-gradient-to-r from-kid-orange to-kid-yellow p-6">
-        <CardTitle className="flex items-center gap-2 text-white">
+    <Card className="overflow-hidden border-2 border-black border-dashed bg-white">
+      <CardHeader className="bg-[#E0F4E8] p-5 border-b-2 border-black border-dashed">
+        <CardTitle className="flex items-center gap-2 text-black font-normal" style={{ fontFamily: "'Comic Sans MS', cursive" }}>
           <Trophy className="h-6 w-6" />
-          Weekly Challenges
+          <span className="text-xl" style={{ transform: "rotate(-2deg)" }}>Weekly Challenges</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="p-6 space-y-6">
         {activeChallenges.length === 0 ? (
           <div className="text-center p-6">
-            <p className="text-muted-foreground">All challenges completed! Check back next week.</p>
+            <Trophy className="h-16 w-16 mx-auto text-kid-yellow mb-2 animate-float" />
+            <p className="text-black text-sm" style={{ fontFamily: "'Comic Sans MS', cursive" }}>All challenges completed! Check back next week.</p>
           </div>
         ) : (
           <>
             {activeChallenges.map((challenge) => (
               <div 
                 key={challenge.id} 
-                className="space-y-3 bg-muted p-4 rounded-lg cursor-pointer"
+                className="space-y-3 p-4 rounded-lg cursor-pointer border-2 border-black border-dashed bg-white/50 backdrop-blur-sm hover:bg-white/70"
                 onClick={() => setExpandedChallenge(expandedChallenge === challenge.id ? null : challenge.id)}
               >
                 <div className="flex justify-between items-center">
-                  <h3 className="font-medium">{challenge.name}</h3>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                  <h3 className="font-medium" style={{ fontFamily: "'Comic Sans MS', cursive" }}>{challenge.name}</h3>
+                  <div className="flex items-center gap-2 text-black text-sm" style={{ fontFamily: "'Comic Sans MS', cursive" }}>
                     <Clock className="h-4 w-4" />
                     <span>{getDaysRemaining(challenge.deadline)} days left</span>
                   </div>
@@ -54,13 +55,11 @@ const WeeklyChallenges = () => {
                 
                 <Progress 
                   value={(challenge.currentAmount / challenge.targetAmount) * 100} 
-                  className="h-2"
+                  className="h-2 bg-[#f1f1f1] border border-black"
                 />
                 
                 <div className="flex justify-between items-center text-sm">
-                  <span>
-                    Progress: {challenge.currentAmount}/{challenge.targetAmount}
-                  </span>
+                  <span style={{ fontFamily: "'Comic Sans MS', cursive" }} className="text-black">Progress: {challenge.currentAmount}/{challenge.targetAmount}</span>
                   <span>Reward: <CoinDisplay amount={challenge.reward} size="sm" /></span>
                 </div>
                 

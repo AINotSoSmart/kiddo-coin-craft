@@ -210,7 +210,7 @@ const Goals = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {savingsGoals.map((goal) => (
-              <Card key={goal.id} className="overflow-hidden">
+              <Card key={goal.id} className="glass-card overflow-hidden">
                 <div className="h-40 overflow-hidden">
                   <img
                     src={goal.imageUrl}

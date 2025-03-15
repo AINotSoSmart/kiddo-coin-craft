@@ -48,7 +48,7 @@ const StoreCategories = () => {
       {categories.map((category) => (
         <div 
           key={category.id}
-          className="glass-card rounded-xl overflow-hidden hover:shadow-lg transition-all group cursor-pointer"
+          className="glass-card rounded-xl overflow-hidden transition-all group cursor-pointer"
         >
           <div className={`p-4 flex flex-col items-center ${category.color}`}>
             <category.icon className="h-6 w-6 mb-1 group-hover:animate-bounce" />

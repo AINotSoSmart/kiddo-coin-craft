@@ -102,31 +102,31 @@
 }
 
 .glass-card {
-  @apply bg-white backdrop-blur-md border-2 border-dashed border-black shadow-[3px_3px_0_#000000];
+  @apply bg-white/90 backdrop-blur-md border-2 border-dashed border-black font-['Comic_Sans_MS',cursive];
 }
 
 .card-gradient-purple {
-  @apply bg-[#FEF7CD] text-black;
+  @apply bg-gradient-to-r from-kid-purple/90 to-kid-purple/70 text-white;
 }
 
 .card-gradient-teal {
-  @apply bg-[#FEF7CD] text-black;
+  @apply bg-gradient-to-r from-kid-teal/90 to-kid-teal/70 text-white;
 }
 
 .card-gradient-yellow {
-  @apply bg-[#FEF7CD] text-black;
+  @apply bg-gradient-to-r from-kid-yellow/90 to-kid-yellow/70 text-black;
 }
 
 .card-gradient-pink {
-  @apply bg-[#FEF7CD] text-black;
+  @apply bg-gradient-to-r from-kid-pink/90 to-kid-pink/70 text-white;
 }
 
 .card-gradient-blue {
-  @apply bg-[#FEF7CD] text-black;
+  @apply bg-gradient-to-r from-kid-blue/90 to-kid-blue/70 text-white;
 }
 
 .card-gradient-orange {
-  @apply bg-[#FEF7CD] text-black;
+  @apply bg-gradient-to-r from-kid-orange/90 to-kid-orange/70 text-white;
 }
 
 .confetti-container {
@@ -166,11 +166,11 @@
 }
 
 .doodle-button {
-  @apply bg-[#FEF7CD] border-2 border-solid border-black rounded-lg px-4 py-2 text-black font-bold shadow-[3px_3px_0_#000000] transition-all duration-200 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0_#000000];
+  @apply bg-[#FEF7CD] border-2 border-solid border-black rounded-lg px-4 py-2 text-black font-bold shadow-[3px_3px_0_#000000] transition-all duration-200 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0_#000000] font-['Comic_Sans_MS',cursive];
 }
 
 .doodle-input {
-  @apply bg-white border-2 border-dashed border-black rounded-lg px-4 py-2;
+  @apply bg-white/90 border-2 border-dashed border-black rounded-lg px-4 py-2 font-['Comic_Sans_MS',cursive];
 }
 
 .doodle-progress {

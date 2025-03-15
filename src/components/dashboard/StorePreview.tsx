@@ -20,14 +20,14 @@ const StorePreview = () => {
   }, [storeItems]);
 
   return (
-    <Card className="overflow-hidden border-2 border-white/30 glass-card">
-      <CardHeader className="bg-gradient-to-r from-kid-pink to-kid-purple p-6">
-        <CardTitle className="flex items-center justify-between text-white">
+    <Card className="overflow-hidden border-2 border-black border-dashed bg-white">
+      <CardHeader className="bg-[#FFE6EA] p-5 border-b-2 border-black border-dashed">
+        <CardTitle className="flex items-center justify-between text-black font-normal" style={{ fontFamily: "'Comic Sans MS', cursive" }}>
           <div className="flex items-center gap-2">
             <ShoppingCart className="h-6 w-6" />
-            Fun Shop
+            <span className="text-xl" style={{ transform: "rotate(-2deg)" }}>Fun Shop</span>
           </div>
-          <Button variant="secondary" size="sm" asChild className="bg-white/20 hover:bg-white/30 text-white">
+          <Button variant="secondary" size="sm" asChild>
             <Link to="/store">View All</Link>
           </Button>
         </CardTitle>
@@ -36,7 +36,7 @@ const StorePreview = () => {
         {storeItems.slice(0, 2).map((item) => (
           <div 
             key={item.id} 
-            className="group glass-card rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all"
+            className="group glass-card rounded-lg overflow-hidden flex flex-col hover:bg-white/70 transition-all"
           >
             <div className="h-32 overflow-hidden relative">
               <img 

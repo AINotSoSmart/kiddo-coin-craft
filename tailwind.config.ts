@@ -1,8 +1,11 @@
-
 import type { Config } from "tailwindcss";
 
+// This lets TypeScript recognize the require function
+// @ts-ignore
+declare const require: any;
+
 export default {
-	darkMode: ["class"],
+	darkMode: "class", // Fixed: Changed from array to string
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -49,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
 				},
+				'kid-purple': '#9333EA',
+				'kid-teal': '#14B8A6',
+				'kid-yellow': '#FBBF24',
+				'kid-pink': '#EC4899',
+				'kid-blue': '#3B82F6',
+				'kid-orange': '#F97316',
+				'kid-green': '#22C55E',
+				'kid-red': '#EF4444',
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
@@ -173,5 +184,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate")], // Fixed: Added type declaration for require
 } satisfies Config;

@@ -52,6 +52,7 @@ export interface BudgetContextType {
   updateSavingsGoal: (goalId: string, amount: number) => void;
   removeSavingsGoal: (goalId: string) => void;
   purchaseItem: (itemId: string) => boolean;
+  addTask: (task: Omit<Task, 'id' | 'completed'>) => void;
   completeTask: (taskId: string) => void;
   resetTask: (taskId: string) => void;
   isItemOwned: (itemId: string) => boolean;
@@ -71,9 +72,18 @@ export const useBudget = () => {
 
 export const BudgetProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
-  const [balance, setBalance] = useState<number>(100);
-  const [weeklyAllowance] = useState<number>(50);
-  const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([
+  // Load initial state from localStorage or use defaults
+  const [balance, setBalance] = useState<number>(() => {
+    const saved = localStorage.getItem('kiddo-balance');
+    return saved ? JSON.parse(saved) : 100;
+  });
+  const [weeklyAllowance] = useState<number>(() => {
+    const saved = localStorage.getItem('kiddo-allowance');
+    return saved ? JSON.parse(saved) : 50;
+  });
+  const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>(() => {
+    const saved = localStorage.getItem('kiddo-savings');
+    return saved ? JSON.parse(saved) : [
     {
       id: '1',
       name: 'Video Game',
@@ -88,7 +98,8 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       currentAmount: 100,
       imageUrl: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?q=80&w=300&auto=format&fit=crop',
     }
-  ]);
+  ]});
+
   const [storeItems, setStoreItems] = useState<StoreItem[]>([
     {
       id: 's1',
@@ -131,8 +142,11 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       category: 'upgrade',
     },
   ]);
+
   
-  const [tasks, setTasks] = useState<Task[]>([
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const saved = localStorage.getItem('kiddo-tasks');
+    return saved ? JSON.parse(saved) : [
     {
       id: 't1',
       name: 'Clean your room',
@@ -157,12 +171,18 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       reward: 15,
       completed: false
     }
-  ]);
+  ]});
+
   
-  const [ownedItems, setOwnedItems] = useState<string[]>([]);
+  const [ownedItems, setOwnedItems] = useState<string[]>(() => {
+    const saved = localStorage.getItem('kiddo-owned-items');
+    return saved ? JSON.parse(saved) : [];
+  });
   
   // Initialize weekly challenges
-  const [challenges, setChallenges] = useState<Challenge[]>([
+  const [challenges, setChallenges] = useState<Challenge[]>(() => {
+    const saved = localStorage.getItem('kiddo-challenges');
+    return saved ? JSON.parse(saved) : [
     {
       id: 'c1',
       name: 'Save 50 Coins',
@@ -196,7 +216,8 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
       completed: false
     }
-  ]);
+  ]});
+
 
   // Add to balance
   const addBalance = (amount: number) => {
@@ -416,6 +437,45 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
     return ownedItems.includes(itemId);
   };
 
+  // Save state changes to localStorage
+  useEffect(() => {
+    localStorage.setItem('kiddo-balance', JSON.stringify(balance));
+  }, [balance]);
+
+  useEffect(() => {
+    localStorage.setItem('kiddo-allowance', JSON.stringify(weeklyAllowance));
+  }, [weeklyAllowance]);
+
+  useEffect(() => {
+    localStorage.setItem('kiddo-savings', JSON.stringify(savingsGoals));
+  }, [savingsGoals]);
+
+  useEffect(() => {
+    localStorage.setItem('kiddo-owned-items', JSON.stringify(ownedItems));
+  }, [ownedItems]);
+
+  useEffect(() => {
+    localStorage.setItem('kiddo-challenges', JSON.stringify(challenges));
+  }, [challenges]);
+
+  useEffect(() => {
+    localStorage.setItem('kiddo-tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  // Add a new task
+  const addTask = (task: Omit<Task, 'id' | 'completed'>) => {
+    const newTask: Task = {
+      ...task,
+      id: Date.now().toString(),
+      completed: false,
+    };
+    setTasks((prev) => [...prev, newTask]);
+    toast({
+      title: "Task Added!",
+      description: `New task "${task.name}" has been added.`,
+    });
+  };
+
   return (
     <BudgetContext.Provider
       value={{
@@ -432,6 +492,7 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
         updateSavingsGoal,
         removeSavingsGoal,
         purchaseItem,
+        addTask,
         completeTask,
         resetTask,
         isItemOwned,

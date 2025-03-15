@@ -232,67 +232,52 @@ const Store = () => {
   );
 };
 
-const StoreItemCard = ({
-  item,
-  owned,
-  onSale,
-  discountedPrice,
-  onSelect,
-}: {
-  item: any;
-  owned: boolean;
-  onSale: boolean;
-  discountedPrice: number;
-  onSelect: () => void;
-}) => {
-  return (
-    <Card
-      className={`overflow-hidden hover:shadow-md transition-all glass-card group ${
-        owned ? 'border-kid-teal/50' : ''
-      }`}
-    >
-      <div className="h-40 overflow-hidden relative">
-        <img
-          src={item.imageUrl}
-          alt={item.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        {owned && (
-          <div className="absolute top-2 right-2 bg-kid-teal text-white px-2 py-1 rounded-full text-xs font-medium">
-            Owned
-          </div>
-        )}
-        {onSale && !owned && (
-          <div className="absolute top-2 right-2 bg-kid-red text-white px-2 py-1 rounded-full text-xs font-medium animate-pulse">
-            20% OFF!
-          </div>
-        )}
-      </div>
-      <CardHeader className="p-4 pb-0">
-        <CardTitle className="text-lg">{item.name}</CardTitle>
-        <CardDescription className="line-clamp-2">
-          {item.description}
-        </CardDescription>
-      </CardHeader>
-      <CardFooter className="p-4 pt-2 flex justify-between">
-        <div className="flex items-center gap-2">
-          {onSale && (
-            <span className="line-through text-muted-foreground text-sm">
-              {item.price}
-            </span>
-          )}
-          <CoinDisplay amount={discountedPrice} size="md" />
+const StoreItemCard = ({ item, owned, onSale, discountedPrice, onSelect }) => (
+  <div
+    className={`overflow-hidden transition-all glass-card group ${owned ? 'bg-muted' : ''}`}
+    onClick={onSelect}
+  >
+    <div className="h-40 overflow-hidden relative">
+      <img
+        src={item.imageUrl}
+        alt={item.name}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      {owned && (
+        <div className="absolute top-2 right-2 bg-kid-teal text-white px-2 py-1 rounded-full text-xs font-medium">
+          Owned
         </div>
-        <Button 
-          size="sm" 
-          onClick={onSelect}
-          className={`${owned ? 'bg-kid-teal hover:bg-kid-teal/90' : 'bg-kid-purple hover:bg-kid-purple/90'}`}
-        >
-          {owned ? "View" : "Buy"}
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-};
+      )}
+      {onSale && !owned && (
+        <div className="absolute top-2 right-2 bg-kid-red text-white px-2 py-1 rounded-full text-xs font-medium animate-pulse">
+          20% OFF!
+        </div>
+      )}
+    </div>
+    <CardHeader className="p-4 pb-0">
+      <CardTitle className="text-lg">{item.name}</CardTitle>
+      <CardDescription className="line-clamp-2">
+        {item.description}
+      </CardDescription>
+    </CardHeader>
+    <CardFooter className="p-4 pt-2 flex justify-between">
+      <div className="flex items-center gap-2">
+        {onSale && (
+          <span className="line-through text-muted-foreground text-sm">
+            {item.price}
+          </span>
+        )}
+        <CoinDisplay amount={discountedPrice} size="md" />
+      </div>
+      <Button 
+        size="sm" 
+        onClick={onSelect}
+        className={`${owned ? 'bg-kid-teal hover:bg-kid-teal/90' : 'bg-kid-purple hover:bg-kid-purple/90'}`}
+      >
+        {owned ? "View" : "Buy"}
+      </Button>
+    </CardFooter>
+  </div>
+);
 
 export default Store;
