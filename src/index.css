@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 220 25% 97%;
-    --foreground: 220 25% 20%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 20%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 20%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 250 60% 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 50 100% 57%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 175 60% 40%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 220 15% 93%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 250 60% 95%;
-    --accent-foreground: 250 60% 40%;
+    --accent: 50 100% 95%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 70% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 250 60% 60%;
+    --border: 0 0% 0%;
+    --input: 0 0% 80%;
+    --ring: 50 100% 57%;
 
     --radius: 0.75rem;
 
@@ -46,33 +46,33 @@
   }
 
   .dark {
-    --background: 220 25% 10%;
-    --foreground: 220 15% 90%;
+    --background: 0 0% 10%;
+    --foreground: 0 0% 95%;
 
-    --card: 220 25% 15%;
-    --card-foreground: 220 15% 90%;
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 220 25% 15%;
-    --popover-foreground: 220 15% 90%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 250 60% 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 50 100% 57%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 175 60% 40%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 25% 20%;
-    --muted-foreground: 220 15% 60%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 220 25% 20%;
-    --accent-foreground: 220 15% 90%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 25% 20%;
-    --input: 220 25% 20%;
-    --ring: 250 60% 60%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 50 100% 57%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -92,7 +92,8 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, hsl(220, 25%, 97%) 0%, hsl(220, 25%, 94%) 100%);
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f0f0f0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
   }
 }
 
@@ -101,31 +102,31 @@
 }
 
 .glass-card {
-  @apply bg-white/60 backdrop-blur-md border border-white/40 shadow-sm hover:shadow-md transition-all duration-300;
+  @apply bg-white backdrop-blur-md border-2 border-dashed border-black shadow-[3px_3px_0_#000000];
 }
 
 .card-gradient-purple {
-  @apply bg-gradient-to-br from-kid-purple/80 to-kid-purple/60 text-white;
+  @apply bg-[#FEF7CD] text-black;
 }
 
 .card-gradient-teal {
-  @apply bg-gradient-to-br from-kid-teal/80 to-kid-teal/60 text-white;
+  @apply bg-[#FEF7CD] text-black;
 }
 
 .card-gradient-yellow {
-  @apply bg-gradient-to-br from-kid-yellow/80 to-kid-yellow/60 text-white;
+  @apply bg-[#FEF7CD] text-black;
 }
 
 .card-gradient-pink {
-  @apply bg-gradient-to-br from-kid-pink/80 to-kid-pink/60 text-white;
+  @apply bg-[#FEF7CD] text-black;
 }
 
 .card-gradient-blue {
-  @apply bg-gradient-to-br from-kid-blue/80 to-kid-blue/60 text-white;
+  @apply bg-[#FEF7CD] text-black;
 }
 
 .card-gradient-orange {
-  @apply bg-gradient-to-br from-kid-orange/80 to-kid-orange/60 text-white;
+  @apply bg-[#FEF7CD] text-black;
 }
 
 .confetti-container {
@@ -148,6 +149,38 @@
 }
 
 .intro-card {
-  @apply bg-white/80 backdrop-blur-md border border-white/40 shadow-sm rounded-xl p-8 max-w-2xl mx-auto;
+  @apply bg-white border-2 border-dashed border-black rounded-xl p-8 max-w-2xl mx-auto shadow-[5px_5px_0_#000000] transform rotate-[-1deg];
 }
 
+/* Doodle style classes */
+.doodle-card {
+  @apply bg-white border-2 border-dashed border-black rounded-xl p-4 shadow-[3px_3px_0_#000000] transform rotate-[-1deg];
+}
+
+.doodle-header {
+  @apply bg-[#FEF7CD] border-b-2 border-dashed border-black p-4;
+}
+
+.doodle-container {
+  @apply p-4 space-y-4;
+}
+
+.doodle-button {
+  @apply bg-[#FEF7CD] border-2 border-solid border-black rounded-lg px-4 py-2 text-black font-bold shadow-[3px_3px_0_#000000] transition-all duration-200 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0_#000000];
+}
+
+.doodle-input {
+  @apply bg-white border-2 border-dashed border-black rounded-lg px-4 py-2;
+}
+
+.doodle-progress {
+  @apply bg-[#f1f1f1] rounded-full h-3 border border-black;
+}
+
+.doodle-progress-bar {
+  @apply bg-[#FBBF24] h-3 rounded-full transition-all duration-1000 ease-out;
+}
+
+.doodle-text {
+  font-family: 'Comic Sans MS', cursive;
+}

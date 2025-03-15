@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +40,47 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Hand-drawn style */
+.doodle-card {
+  border: 2px dashed #000000;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 3px 3px 0 #000000;
+  transform: rotate(-1deg);
+}
+
+.doodle-button {
+  background-color: #FEF7CD;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  color: #000000;
+  font-family: 'Comic Sans MS', cursive;
+  font-weight: bold;
+  padding: 8px 20px;
+  box-shadow: 3px 3px 0 #000000;
+  transition: all 0.2s ease;
+}
+
+.doodle-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #000000;
+}
+
+.doodle-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 #000000;
+}
+
+.doodle-input {
+  background-color: #ffffff;
+  border: 2px dashed #000000;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.hand-drawn-text {
+  font-family: 'Comic Sans MS', cursive;
 }
