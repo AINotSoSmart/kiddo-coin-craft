@@ -28,14 +28,14 @@ const AllowanceTracker = () => {
   const progressPercentage = ((7 - daysUntilAllowance) / 7) * 100;
 
   return (
-    <Card className="overflow-hidden border-2 border-white/30 glass-card">
-      <CardHeader className="bg-gradient-to-r from-kid-purple to-kid-blue p-6">
+    <Card className="overflow-hidden border border-white/30 glass-card">
+      <CardHeader className="bg-gradient-to-r from-primary/80 to-primary/60 p-5">
         <CardTitle className="flex items-center gap-2 text-white">
-          <BadgeDollarSign className="h-6 w-6" />
+          <BadgeDollarSign className="h-5 w-5" />
           My Piggy Bank
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-6 space-y-6">
+      <CardContent className="p-5 space-y-5">
         <div className="text-center">
           <p className="text-muted-foreground text-sm mb-1">Current Balance</p>
           <div className={`flex justify-center ${showAnimation ? 'animate-pop' : ''}`}>
@@ -43,29 +43,29 @@ const AllowanceTracker = () => {
           </div>
         </div>
         
-        <div className="bg-white/30 backdrop-blur-sm rounded-lg p-4 text-center">
+        <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 text-center">
           <div className="flex justify-between items-center mb-2">
             <div className="flex items-center gap-1 text-muted-foreground">
               <Clock className="h-4 w-4" />
               <span className="text-xs">{daysUntilAllowance} days left</span>
             </div>
-            <div className="flex items-center gap-1 text-green-600">
+            <div className="flex items-center gap-1 text-secondary">
               <ArrowUpRight className="h-4 w-4" />
               <span className="text-xs font-medium">+{weeklyAllowance}</span>
             </div>
           </div>
           
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+          <div className="w-full bg-muted rounded-full h-2 mb-2">
             <div 
-              className="bg-gradient-to-r from-kid-purple to-kid-blue h-2.5 rounded-full transition-all duration-1000 ease-out"
+              className="bg-gradient-to-r from-primary/80 to-secondary/80 h-2 rounded-full transition-all duration-1000 ease-out"
               style={{ width: `${progressPercentage}%` }}
             ></div>
           </div>
           
-          <p className="text-xs text-muted-foreground">Next allowance in {daysUntilAllowance} days</p>
+          <p className="text-xs text-muted-foreground mt-2">Next allowance in {daysUntilAllowance} days</p>
         </div>
         
-        <div className="text-center bg-white/20 backdrop-blur-sm rounded-lg p-3 animate-pulse-scale">
+        <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3">
           <p className="text-sm font-medium">Weekly Allowance</p>
           <CoinDisplay amount={weeklyAllowance} size="md" />
         </div>
