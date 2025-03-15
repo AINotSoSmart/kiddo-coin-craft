@@ -5,7 +5,7 @@ import { useBudget } from "@/context/BudgetContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PlusCircle, ClipboardPen, Settings, Trash2 } from "lucide-react";
+import { PlusCircle, ClipboardPen, Settings, Trash2, CheckCircle, Calendar, BadgeDollarSign } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -30,15 +30,21 @@ const ParentSettings = () => {
     reward: "",
   });
   const [manualAmount, setManualAmount] = useState("");
+  const [isResetingTasks, setIsResetingTasks] = useState(false);
+  const [isAddingCoins, setIsAddingCoins] = useState(false);
 
   const handleResetTasks = () => {
-    tasks.forEach((task) => {
-      resetTask(task.id);
-    });
-    toast({
-      title: "Tasks Reset",
-      description: "All tasks have been reset and are available again.",
-    });
+    setIsResetingTasks(true);
+    setTimeout(() => {
+      tasks.forEach((task) => {
+        resetTask(task.id);
+      });
+      toast({
+        title: "Tasks Reset",
+        description: "All tasks have been reset and are available again.",
+      });
+      setIsResetingTasks(false);
+    }, 500);
   };
 
   const handleManualAdd = () => {
@@ -52,22 +58,28 @@ const ParentSettings = () => {
       return;
     }
     
-    addBalance(amount);
-    setManualAmount("");
+    setIsAddingCoins(true);
+    setTimeout(() => {
+      addBalance(amount);
+      setManualAmount("");
+      setIsAddingCoins(false);
+    }, 500);
   };
 
   return (
     <Layout>
       <div className="py-8">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold mb-2">Parent Settings</h1>
+          <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-kid-teal to-kid-blue bg-clip-text text-transparent">
+            Parent Controls
+          </h1>
           <p className="text-muted-foreground">
             Manage tasks and allowance settings
           </p>
         </div>
 
         <Tabs defaultValue="tasks" className="w-full">
-          <TabsList className="grid grid-cols-2 mb-8">
+          <TabsList className="grid grid-cols-2 mb-8 bg-white/50 backdrop-blur-sm">
             <TabsTrigger value="tasks" className="flex items-center gap-2">
               <ClipboardPen className="h-5 w-5" />
               Tasks Management
@@ -79,22 +91,28 @@ const ParentSettings = () => {
           </TabsList>
 
           <TabsContent value="tasks">
-            <Card>
-              <CardHeader>
-                <CardTitle>Tasks Management</CardTitle>
-                <CardDescription>
+            <Card className="glass-card border-white/30">
+              <CardHeader className="bg-gradient-to-r from-kid-blue to-kid-purple p-6 text-white">
+                <CardTitle className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5" />
+                  Tasks Management
+                </CardTitle>
+                <CardDescription className="text-white/80">
                   Create and manage tasks that children can complete to earn coins
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-6">
                 <div className="space-y-6">
                   <div className="space-y-4">
-                    <h3 className="text-lg font-medium">Current Tasks</h3>
+                    <h3 className="text-lg font-medium flex items-center gap-2">
+                      <ClipboardPen className="h-5 w-5 text-kid-blue" />
+                      Current Tasks
+                    </h3>
                     {tasks.map((task) => (
                       <div
                         key={task.id}
-                        className={`flex items-center justify-between p-4 rounded-lg border ${
-                          task.completed ? "bg-muted" : ""
+                        className={`flex items-center justify-between p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-white/30 hover:shadow-md transition-all ${
+                          task.completed ? "bg-gray-50/50" : ""
                         }`}
                       >
                         <div className="flex items-center gap-2">
@@ -118,7 +136,7 @@ const ParentSettings = () => {
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-8 w-8 p-0"
+                            className="h-8 w-8 p-0 hover:bg-red-50 hover:text-red-500"
                             onClick={() => resetTask(task.id)}
                             disabled={!task.completed}
                           >
@@ -131,7 +149,10 @@ const ParentSettings = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-lg font-medium">Add New Task</h3>
+                    <h3 className="text-lg font-medium flex items-center gap-2">
+                      <PlusCircle className="h-5 w-5 text-kid-green" />
+                      Add New Task
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="task-name">Task Name</Label>
@@ -142,6 +163,7 @@ const ParentSettings = () => {
                           onChange={(e) =>
                             setNewTask({ ...newTask, name: e.target.value })
                           }
+                          className="bg-white/70"
                         />
                       </div>
                       <div className="space-y-2">
@@ -155,11 +177,12 @@ const ParentSettings = () => {
                             setNewTask({ ...newTask, reward: e.target.value })
                           }
                           min="1"
+                          className="bg-white/70"
                         />
                       </div>
                     </div>
                     <Button
-                      className="w-full md:w-auto"
+                      className="w-full md:w-auto bg-kid-green hover:bg-kid-green/90"
                       disabled={!newTask.name || !newTask.reward}
                     >
                       <PlusCircle className="mr-2 h-4 w-4" />
@@ -168,25 +191,36 @@ const ParentSettings = () => {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter className="flex justify-end space-x-2">
-                <Button variant="outline" onClick={handleResetTasks}>
-                  Reset All Tasks
+              <CardFooter className="flex justify-end space-x-2 p-6 pt-0">
+                <Button 
+                  variant="outline" 
+                  onClick={handleResetTasks}
+                  disabled={isResetingTasks}
+                  className={`bg-white/50 ${isResetingTasks ? 'animate-pulse' : ''}`}
+                >
+                  {isResetingTasks ? 'Resetting...' : 'Reset All Tasks'}
                 </Button>
               </CardFooter>
             </Card>
           </TabsContent>
 
           <TabsContent value="allowance">
-            <Card>
-              <CardHeader>
-                <CardTitle>Allowance Settings</CardTitle>
-                <CardDescription>
+            <Card className="glass-card border-white/30">
+              <CardHeader className="bg-gradient-to-r from-kid-teal to-kid-blue p-6 text-white">
+                <CardTitle className="flex items-center gap-2">
+                  <BadgeDollarSign className="h-5 w-5" />
+                  Allowance Settings
+                </CardTitle>
+                <CardDescription className="text-white/80">
                   Configure the weekly allowance and add manual coins
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="p-6 space-y-6">
                 <div className="space-y-4">
-                  <h3 className="text-lg font-medium">Weekly Allowance</h3>
+                  <h3 className="text-lg font-medium flex items-center gap-2">
+                    <Calendar className="h-5 w-5 text-kid-teal" />
+                    Weekly Allowance
+                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="weekly-amount">Amount (Coins)</Label>
@@ -196,13 +230,14 @@ const ParentSettings = () => {
                         placeholder="e.g., 50"
                         defaultValue="50"
                         min="1"
+                        className="bg-white/70"
                       />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="allowance-day">Day of Week</Label>
                       <select
                         id="allowance-day"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-10 w-full rounded-md border border-input bg-white/70 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <option value="monday">Monday</option>
                         <option value="tuesday">Tuesday</option>
@@ -214,30 +249,37 @@ const ParentSettings = () => {
                       </select>
                     </div>
                   </div>
-                  <Button>Save Allowance Settings</Button>
+                  <Button className="bg-kid-teal hover:bg-kid-teal/90">Save Allowance Settings</Button>
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-medium">Add Coins Manually</h3>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <div className="flex-1">
-                      <Label htmlFor="manual-amount">Amount (Coins)</Label>
-                      <Input
-                        id="manual-amount"
-                        type="number"
-                        placeholder="e.g., 25"
-                        value={manualAmount}
-                        onChange={(e) => setManualAmount(e.target.value)}
-                        min="1"
-                      />
-                    </div>
-                    <div className="self-end">
-                      <Button 
-                        onClick={handleManualAdd}
-                        disabled={!manualAmount || parseInt(manualAmount) <= 0}
-                      >
-                        Add Coins
-                      </Button>
+                  <h3 className="text-lg font-medium flex items-center gap-2">
+                    <BadgeDollarSign className="h-5 w-5 text-kid-yellow" />
+                    Add Coins Manually
+                  </h3>
+                  <div className="p-4 bg-white/30 backdrop-blur-sm rounded-lg">
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <div className="flex-1">
+                        <Label htmlFor="manual-amount">Amount (Coins)</Label>
+                        <Input
+                          id="manual-amount"
+                          type="number"
+                          placeholder="e.g., 25"
+                          value={manualAmount}
+                          onChange={(e) => setManualAmount(e.target.value)}
+                          min="1"
+                          className="bg-white/70"
+                        />
+                      </div>
+                      <div className="self-end">
+                        <Button 
+                          onClick={handleManualAdd}
+                          disabled={!manualAmount || parseInt(manualAmount) <= 0 || isAddingCoins}
+                          className={`bg-kid-yellow hover:bg-kid-yellow/90 text-black ${isAddingCoins ? 'animate-pulse' : ''}`}
+                        >
+                          {isAddingCoins ? 'Adding...' : 'Add Coins'}
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>

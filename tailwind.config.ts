@@ -69,6 +69,9 @@ export default {
 					yellow: '#FBBF24',
 					pink: '#EC4899',
 					blue: '#3B82F6',
+					orange: '#F97316',
+					green: '#10B981',
+					red: '#EF4444',
 				}
 			},
 			borderRadius: {
@@ -108,13 +111,65 @@ export default {
 					'50%': {
 						transform: 'rotate(3deg)'
 					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-5px)'
+					}
+				},
+				'confetti-explosion': {
+					'0%': {
+						transform: 'translateY(0) scale(0)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateY(-100px) scale(1)',
+						opacity: '0'
+					}
+				},
+				'coin-spin': {
+					'0%': {
+						transform: 'rotateY(0)'
+					},
+					'100%': {
+						transform: 'rotateY(360deg)'
+					}
+				},
+				'pop': {
+					'0%': {
+						transform: 'scale(0.8)',
+						opacity: '0.5'
+					},
+					'50%': {
+						transform: 'scale(1.1)'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					}
+				},
+				'pulse-scale': {
+					'0%, 100%': {
+						transform: 'scale(1)'
+					},
+					'50%': {
+						transform: 'scale(1.05)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'bounce': 'bounce 1s infinite',
-				'jiggle': 'jiggle 0.5s ease-in-out'
+				'bounce': 'bounce 2s infinite ease-in-out',
+				'jiggle': 'jiggle 0.5s ease-in-out',
+				'float': 'float 3s infinite ease-in-out',
+				'confetti': 'confetti-explosion 1s forwards ease-out',
+				'coin-spin': 'coin-spin 0.5s ease-in-out',
+				'pop': 'pop 0.4s ease-out',
+				'pulse-scale': 'pulse-scale 2s infinite ease-in-out'
 			}
 		}
 	},
