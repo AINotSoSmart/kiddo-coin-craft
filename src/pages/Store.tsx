@@ -234,7 +234,7 @@ const Store = () => {
 
 const StoreItemCard = ({ item, owned, onSale, discountedPrice, onSelect }) => (
   <div
-    className={`overflow-hidden transition-all glass-card group ${owned ? 'bg-muted' : ''}`}
+    className={`overflow-hidden transition-all rounded glass-card group ${owned ? 'bg-muted' : ''}`}
     onClick={onSelect}
   >
     <div className="h-40 overflow-hidden relative">

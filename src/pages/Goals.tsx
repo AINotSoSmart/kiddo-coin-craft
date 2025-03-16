@@ -178,6 +178,24 @@ const Goals = () => {
                       <SelectItem value="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=300&auto=format&fit=crop">
                         Smartphone
                       </SelectItem>
+                      <SelectItem value="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=300&auto=format&fit=crop">
+                        Books
+                      </SelectItem>
+                      <SelectItem value="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=300&auto=format&fit=crop">
+                        Sports Equipment
+                      </SelectItem>
+                      <SelectItem value="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=300&auto=format&fit=crop">
+                        Camera
+                      </SelectItem>
+                      <SelectItem value="https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=300&auto=format&fit=crop">
+                        Art Supplies
+                      </SelectItem>
+                      <SelectItem value="https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=300&auto=format&fit=crop">
+                        Musical Instrument
+                      </SelectItem>
+                      <SelectItem value="https://images.unsplash.com/photo-1596496181848-3091d4878b24?q=80&w=300&auto=format&fit=crop">
+                        Skateboard
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

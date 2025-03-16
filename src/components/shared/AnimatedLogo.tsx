@@ -30,11 +30,12 @@ const AnimatedLogo = () => {
           }
           .animate-float {
             animation: float 2s ease-in-out infinite;
-            background: linear-gradient(to right, var(--kid-purple), var(--kid-teal));
+            background: linear-gradient(to right, #8B5CF6, #2DD4BF);
             -webkit-background-clip: text;
-            color: transparent;
+            -webkit-text-fill-color: transparent;
             display: inline-block;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            text-shadow: none;
+            font-weight: 700;
           }
         `}
       </style>

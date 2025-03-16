@@ -12,7 +12,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b py-2 px-4 relative">
+    <nav className="sticky top-0 z-50 bg-white backdrop-blur-sm border-b py-2 px-4 relative">
       <div className="container flex justify-between items-center relative z-20">
         <AnimatedLogo />
         

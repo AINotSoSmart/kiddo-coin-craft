@@ -92,7 +92,7 @@ const Index = () => {
             <div className="mb-12 text-center">
               <h1 className="text-3xl font-bold mb-2 flex items-center justify-center gap-2">
                 <Sparkles className="h-6 w-6 text-primary/80" />
-                <span className="bg-gradient-to-r from-primary/90 to-secondary/90 bg-clip-text text-transparent">
+                <span className="welcome-text bg-gradient-to-r from-primary/90 to-secondary/90 bg-clip-text text-transparent">
                   Welcome Back!
                 </span>
               </h1>
@@ -100,7 +100,7 @@ const Index = () => {
             </div>
 
             <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-8 text-center [font-family:'Comic_Sans_MS',cursive] bg-gradient-to-r from-kid-purple to-kid-teal bg-clip-text text-transparent">
+              <h2 className="text-2xl font-bold mb-8 text-center [font-family:'Comic_Sans_MS',cursive] bg-gradient-to-r from-kid-purple2 to-kid-teal bg-clip-text text-transparent">
                 Your Money Mastery Path
               </h2>
               <div className="relative">
