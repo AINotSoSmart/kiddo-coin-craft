@@ -4,6 +4,7 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "types": ["node", "vite/client"], // Ensures node:path, node:url, and import.meta.url are recognized
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -11,6 +12,10 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "composite": true, // Required for project references
 
     /* Linting */
     "strict": true,
@@ -18,5 +23,6 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "*.config.ts"], // Include vite.config.ts and similar files
+  "exclude": ["node_modules", "dist"]
 }

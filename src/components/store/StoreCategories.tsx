@@ -24,7 +24,7 @@ const StoreCategories = () => {
       id: 'accessory', 
       name: 'Accessories', 
       icon: Tag, 
-      color: 'bg-kid-blue text-white',
+      color: 'bg-kid-blue/50 text-white',
       count: categoryCounts['accessory'] || 0
     },
     { 

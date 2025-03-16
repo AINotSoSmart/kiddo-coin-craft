@@ -1,40 +1,75 @@
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  /* Light mode variables */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 50 100% 57%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 95%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 50 100% 95%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 70% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 0 0% 0%;
+  --input: 0 0% 80%;
+  --ring: 50 100% 57%;
+  --radius: 0.75rem;
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
+
+  /* Custom colors */
+  --color-kid-purple: #d3a2ff;
+  --color-kid-teal: #14B8A6;
+  --color-kid-yellow: #FBBF24;
+  --color-kid-pink: #EC4899;
+  --color-kid-blue: #7fbfff;
+  --color-kid-orange: #F97316;
+  --color-kid-green: #22C55E;
+  --color-kid-red: #EF4444;
+
+  /* Animation keyframes */
+  --keyframes-confetti-explosion: {
+    "0%": { transform: "translateY(0) scale(0)", opacity: "1" },
+    "100%": { transform: "translateY(-100px) scale(1)", opacity: "0" },
+  };
+}
 
 @layer base {
+  /* Light mode defaults */
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
-
     --card: 0 0% 100%;
     --card-foreground: 0 0% 0%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
-
     --primary: 50 100% 57%;
     --primary-foreground: 0 0% 0%;
-
     --secondary: 0 0% 95%;
     --secondary-foreground: 0 0% 0%;
-
     --muted: 0 0% 95%;
     --muted-foreground: 0 0% 45%;
-
     --accent: 50 100% 95%;
     --accent-foreground: 0 0% 0%;
-
     --destructive: 0 70% 60%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 0 0% 0%;
     --input: 0 0% 80%;
     --ring: 50 100% 57%;
-
-    --radius: 0.75rem;
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -45,35 +80,27 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  /* Dark mode overrides */
   .dark {
     --background: 0 0% 10%;
     --foreground: 0 0% 95%;
-
     --card: 0 0% 15%;
     --card-foreground: 0 0% 95%;
-
     --popover: 0 0% 15%;
     --popover-foreground: 0 0% 95%;
-
     --primary: 50 100% 57%;
     --primary-foreground: 0 0% 0%;
-
     --secondary: 0 0% 20%;
     --secondary-foreground: 0 0% 95%;
-
     --muted: 0 0% 20%;
     --muted-foreground: 0 0% 60%;
-
     --accent: 0 0% 20%;
     --accent-foreground: 0 0% 95%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 50 100% 57%;
-
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -83,104 +110,98 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  .container {
+    @apply mx-auto px-4 max-w-7xl;
   }
 
-  body {
-    @apply bg-background text-foreground;
-    background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f0f0f0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+  .kid-coin {
+    @apply flex items-center gap-1 font-bold text-[hsl(var(--color-kid-yellow))];
   }
-}
 
-.kid-coin {
-  @apply flex items-center gap-1 font-bold text-kid-yellow;
-}
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-md border-2 border-dashed border-black font-[Comic_Sans_MS,cursive];
+  }
 
-.glass-card {
-  @apply bg-white/90 backdrop-blur-md border-2 border-dashed border-black font-['Comic_Sans_MS',cursive];
-}
+  .card-gradient-purple {
+    @apply bg-gradient-to-r from-[hsl(var(--color-kid-purple)/90%)] to-[hsl(var(--color-kid-purple)/70%)] text-white;
+  }
 
-.card-gradient-purple {
-  @apply bg-gradient-to-r from-kid-purple/90 to-kid-purple/70 text-white;
-}
+  .card-gradient-teal {
+    @apply bg-gradient-to-r from-[hsl(var(--color-kid-teal)/90%)] to-[hsl(var(--color-kid-teal)/70%)] text-white;
+  }
 
-.card-gradient-teal {
-  @apply bg-gradient-to-r from-kid-teal/90 to-kid-teal/70 text-white;
-}
+  .card-gradient-yellow {
+    @apply bg-gradient-to-r from-[hsl(var(--color-kid-yellow)/90%)] to-[hsl(var(--color-kid-yellow)/70%)] text-black;
+  }
 
-.card-gradient-yellow {
-  @apply bg-gradient-to-r from-kid-yellow/90 to-kid-yellow/70 text-black;
-}
+  .card-gradient-pink {
+    @apply bg-gradient-to-r from-[hsl(var(--color-kid-pink)/90%)] to-[hsl(var(--color-kid-pink)/70%)] text-white;
+  }
 
-.card-gradient-pink {
-  @apply bg-gradient-to-r from-kid-pink/90 to-kid-pink/70 text-white;
-}
+  .card-gradient-blue {
+    @apply bg-gradient-to-r from-[hsl(var(--color-kid-blue)/90%)] to-[hsl(var(--color-kid-blue)/70%)] text-white;
+  }
 
-.card-gradient-blue {
-  @apply bg-gradient-to-r from-kid-blue/90 to-kid-blue/70 text-white;
-}
+  .card-gradient-orange {
+    @apply bg-gradient-to-r from-[hsl(var(--color-kid-orange)/90%)] to-[hsl(var(--color-kid-orange)/70%)] text-white;
+  }
 
-.card-gradient-orange {
-  @apply bg-gradient-to-r from-kid-orange/90 to-kid-orange/70 text-white;
-}
+  .confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+  }
 
-.confetti-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 50;
-  overflow: hidden;
-}
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+    animation: confetti-explosion 1s forwards ease-out;
+  }
 
-.confetti {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 4px;
-  animation: confetti-explosion 1s forwards ease-out;
-}
+  .intro-card {
+    @apply bg-white border-2 border-dashed border-black rounded-xl p-8 max-w-2xl mx-auto shadow-[5px_5px_0_#000000] rotate-[-1deg];
+  }
 
-.intro-card {
-  @apply bg-white border-2 border-dashed border-black rounded-xl p-8 max-w-2xl mx-auto shadow-[5px_5px_0_#000000] transform rotate-[-1deg];
-}
+  .doodle-card {
+    @apply bg-white border-2 border-dashed border-black rounded-xl p-4 shadow-[3px_3px_0_#000000] rotate-[-1deg];
+  }
 
-/* Doodle style classes */
-.doodle-card {
-  @apply bg-white border-2 border-dashed border-black rounded-xl p-4 shadow-[3px_3px_0_#000000] transform rotate-[-1deg];
-}
+  .doodle-header {
+    @apply bg-[#FEF7CD] border-b-2 border-dashed border-black p-4;
+  }
 
-.doodle-header {
-  @apply bg-[#FEF7CD] border-b-2 border-dashed border-black p-4;
-}
+  .doodle-container {
+    @apply p-4 space-y-4;
+  }
 
-.doodle-container {
-  @apply p-4 space-y-4;
-}
+  .doodle-button {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all border-2 border-dashed border-black backdrop-blur-sm focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [font-family:'Comic_Sans_MS',cursive] bg-[#FEF7CD] hover:bg-white/10 h-10 px-4 py-2 shadow-[3px_3px_0_#000000] hover:shadow-[5px_5px_0_#000000] hover:translate-y-[-2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#000000];
+  }
 
-.doodle-button {
-  @apply bg-[#FEF7CD] border-2 border-solid border-black rounded-lg px-4 py-2 text-black font-bold shadow-[3px_3px_0_#000000] transition-all duration-200 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0_#000000] font-['Comic_Sans_MS',cursive];
-}
+  .doodle-input {
+    @apply bg-white/90 border-2 border-dashed border-black rounded-lg px-4 py-2 font-[Comic_Sans_MS,cursive];
+  }
 
-.doodle-input {
-  @apply bg-white/90 border-2 border-dashed border-black rounded-lg px-4 py-2 font-['Comic_Sans_MS',cursive];
-}
+  .doodle-progress {
+    @apply bg-[#f1f1f1] rounded-full h-3 border border-black;
+  }
 
-.doodle-progress {
-  @apply bg-[#f1f1f1] rounded-full h-3 border border-black;
-}
+  .doodle-progress-bar {
+    @apply bg-[#FBBF24] h-3 rounded-full transition-all duration-1000 ease-out;
+  }
 
-.doodle-progress-bar {
-  @apply bg-[#FBBF24] h-3 rounded-full transition-all duration-1000 ease-out;
-}
-
-.doodle-text {
-  font-family: 'Comic Sans MS', cursive;
+  .doodle-text {
+    font-family: "Comic Sans MS", cursive;
+  }
 }

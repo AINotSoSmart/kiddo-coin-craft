@@ -5,15 +5,10 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": ".", // Global setting for path resolution
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"] // Global alias for consistency
     },
-    "noImplicitAny": false,
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
-    "allowJs": true,
-    "noUnusedLocals": false,
-    "strictNullChecks": false
+    "types": ["node", "vite/client"] // Ensure these types are available globally if needed
   }
 }

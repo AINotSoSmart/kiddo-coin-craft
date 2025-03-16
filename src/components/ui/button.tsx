@@ -5,19 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all border-2 border-black border-dashed backdrop-blur-sm focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [font-family:'Comic_Sans_MS',cursive] doodle-button",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all border-2 border-black backdrop-blur-sm focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [font-family:'Comic_Sans_MS',cursive] bg-[#FEF7CD] hover:bg-white/10 shadow-[3px_3px_0_#000000] hover:shadow-[5px_5px_0_#000000] hover:translate-y-[-2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#000000]",
   {
     variants: {
       variant: {
-        default: "bg-kid-green hover:bg-kid-green/90 text-white shadow-sm",
+        default: "",
         destructive:
-          "bg-kid-red hover:bg-kid-red/90 text-white shadow-sm",
+          "bg-kid-red hover:bg-kid-red/90 text-white",
         outline:
-          "bg-white/50 hover:bg-white/70 text-black shadow-sm",
+          "bg-white/90",
         secondary:
-          "bg-white/50 hover:bg-white/70 text-black shadow-sm",
-        ghost: "hover:bg-white/10 border-transparent",
-        link: "text-primary underline-offset-4 hover:underline border-transparent",
+          "bg-white/90",
+        ghost: "border-transparent shadow-none hover:shadow-none hover:translate-y-0 active:translate-y-0",
+        link: "text-primary underline-offset-4 hover:underline border-transparent shadow-none hover:shadow-none hover:translate-y-0 active:translate-y-0",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -3,20 +3,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const AnimatedLogo = () => {
-  const text = 'KiddoBank';
-  const colors = [
-    ['#FF6B6B', '#FF8E53'], // Red to Orange
-    ['#4ECDC4', '#45B7AF'], // Teal shades
-    ['#FFD93D', '#FFC107'], // Yellow shades
-    ['#6C63FF', '#5A54D4'], // Purple shades
-    ['#43A047', '#2E7D32'], // Green shades
-    ['#FF4081', '#F50057'], // Pink shades
-    ['#651FFF', '#4527A0'], // Deep Purple
-    ['#00BCD4', '#0097A7'], // Cyan shades
-    ['#FF9800', '#F57C00'], // Orange shades
-    ['#9C27B0', '#7B1FA2'], // Purple shades
-
-  ];
+  const text = 'KiddoCoinCraft';
 
   return (
     <Link to="/" className="flex items-center gap-2 group relative">
@@ -25,14 +12,9 @@ const AnimatedLogo = () => {
           {text.split('').map((char, index) => (
             <span
               key={index}
-              className="inline-block animate-bounce-custom"
+              className="inline-block animate-float"
               style={{
                 animationDelay: `${index * 0.1}s`,
-                background: `linear-gradient(45deg, ${colors[index % colors.length][0]}, ${colors[index % colors.length][1]})`,
-                WebkitBackgroundClip: 'text',
-                color: 'transparent',
-                display: 'inline-block',
-                textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
               }}
             >
               {char}
@@ -42,15 +24,17 @@ const AnimatedLogo = () => {
       </div>
       <style>
         {`
-          @keyframes bounce-custom {
+          @keyframes float {
             0%, 100% { transform: translateY(0); }
-            25% { transform: translateY(-15px); }
-            50% { transform: translateY(-5px); }
-            75% { transform: translateY(-10px); }
+            50% { transform: translateY(-10px); }
           }
-          .animate-bounce-custom {
-            animation: bounce-custom 2s ease-in-out infinite;
+          .animate-float {
+            animation: float 2s ease-in-out infinite;
+            background: linear-gradient(to right, var(--kid-purple), var(--kid-teal));
+            -webkit-background-clip: text;
+            color: transparent;
             display: inline-block;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
           }
         `}
       </style>

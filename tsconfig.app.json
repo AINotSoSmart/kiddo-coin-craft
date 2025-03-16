@@ -6,6 +6,15 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+
+    "esModuleInterop": true,
+ 
+    "allowJs": true,
+
+    "strictNullChecks": false,
+
+    "composite": true, // Required for project references
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

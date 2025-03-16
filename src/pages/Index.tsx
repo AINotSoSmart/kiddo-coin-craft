@@ -27,7 +27,7 @@ const Index = () => {
                 Start your financial journey with KidBudget - where learning about money feels like playing your favorite game! 🎮
               </p>
               <div className="flex gap-4">
-                <Button onClick={() => setShowIntro(false)} className="doodle-button text-lg px-6 py-6 animate-bounce-slow">
+                <Button onClick={() => setShowIntro(false)} className="text-lg px-6 py-6 animate-bounce-slow">
                   Start Your Adventure
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>

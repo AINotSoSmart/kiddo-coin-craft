@@ -93,7 +93,7 @@ const TaskList = () => {
                                 : difficulty === 'easy' 
                                   ? 'bg-kid-green hover:bg-kid-green/90' 
                                   : difficulty === 'medium' 
-                                    ? 'bg-kid-blue hover:bg-kid-blue/90' 
+                                    ? 'bg-kid-blue/50 hover:bg-kid-blue/90' 
                                     : 'bg-kid-purple hover:bg-kid-purple/90'
                             }`}
                             onClick={() => handleCompleteTask(task.id)}
