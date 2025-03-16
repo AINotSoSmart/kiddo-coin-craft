@@ -33,7 +33,6 @@
 
   /* Custom colors */
   --color-kid-purple: #d3a2ff;
-  --color-kid-purple2: #941dff;
   --color-kid-teal: #14B8A6;
   --color-kid-yellow: #FBBF24;
   --color-kid-pink: #EC4899;
@@ -212,6 +211,7 @@
     @apply text-[2.5rem] font-bold;
     color: var(--color-kid-purple);
     text-shadow: 3px 3px 0 #000, -1px -1px 0 #FEF7CD;
+    animation: welcome-bounce 1.5s ease-in-out infinite;
   }
 
   .logo-doodle {
@@ -229,4 +229,14 @@
     0%, 100% { transform: rotate(-5deg) scale(1.05); }
     50% { transform: rotate(5deg) scale(0.95); }
   }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+  display: inline-block;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }

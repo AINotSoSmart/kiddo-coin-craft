@@ -24,7 +24,7 @@ const Index = () => {
                 Make Money Management Fun!
               </h1>
               <p className="text-xl mb-8 text-muted-foreground">
-                Start your financial journey with KidBudget - where learning about money feels like playing your favorite game! 🎮
+                Start your financial journey with KiddoBank - where learning about money feels like playing your favorite game! 🎮
               </p>
               <div className="flex gap-4">
                 <Button onClick={() => setShowIntro(false)} className="text-lg px-6 py-6 animate-bounce-slow">

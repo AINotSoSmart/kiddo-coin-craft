@@ -12,31 +12,30 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white backdrop-blur-sm border-b py-2 px-4 relative">
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b py-2 px-4 relative">
       <div className="container flex justify-between items-center relative z-20">
         <AnimatedLogo />
         
         <div className="hidden md:flex items-center space-x-1">
-          <Button className="gap-2" asChild>
+          <Button variant="ghost" asChild>
             <Link to="/" className="flex items-center gap-2">
               <BadgeDollarSign className="h-5 w-5" />
               <span>Dashboard</span>
             </Link>
           </Button>
-     
-          <Button className="gap-2" asChild>
+          <Button variant="ghost" asChild>
             <Link to="/store" className="flex items-center gap-2">
               <ShoppingCart className="h-5 w-5" />
               <span>Store</span>
             </Link>
           </Button>
-          <Button className="gap-2" asChild>
+          <Button variant="ghost" asChild>
             <Link to="/goals" className="flex items-center gap-2">
               <Target className="h-5 w-5" />
               <span>Goals</span>
             </Link>
           </Button>
-          <Button className="gap-2" asChild>
+          <Button variant="ghost" asChild>
             <Link to="/parent" className="flex items-center gap-2">
               <Settings className="h-5 w-5" />
               <span>Parent Settings</span>

@@ -1,9 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { cn } from '@/lib/utils';
 
 const AnimatedLogo = () => {
-  const text = 'KiddoCoinCraft';
+  const text = 'KiddoBank';
 
   return (
     <Link to="/" className="flex items-center gap-2 group relative">
@@ -22,23 +20,6 @@ const AnimatedLogo = () => {
           ))}
         </h1>
       </div>
-      <style>
-        {`
-          @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-          }
-          .animate-float {
-            animation: float 2s ease-in-out infinite;
-            background: linear-gradient(to right, #8B5CF6, #2DD4BF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-            text-shadow: none;
-            font-weight: 700;
-          }
-        `}
-      </style>
     </Link>
   );
 };

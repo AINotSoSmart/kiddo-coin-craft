@@ -101,76 +101,24 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
   ]});
 
   const [storeItems, setStoreItems] = useState<StoreItem[]>([
-    // Toys Category
-    
-  
+    {
+      id: 's1',
+      name: 'Teddy Bear',
+      price: 50,
+      description: 'A cuddly companion for your virtual room',
+      imageUrl: 'https://images.unsplash.com/photo-1558877385-81a1c7b67b22?q=80&w=300&auto=format&fit=crop',
+      category: 'toy',
+    },
+    {
+      id: 's2',
+      name: 'Rocket Ship',
+      price: 75,
+      description: 'Blast off into space with this cool rocket',
+      imageUrl: 'https://images.unsplash.com/photo-1636097411291-91d7d7b44ba7?q=80&w=300&auto=format&fit=crop',
+      category: 'toy',
+    },
     {
       id: 's3',
-      name: 'Building Blocks',
-      price: 85,
-      description: 'Create amazing structures with colorful blocks',
-      imageUrl: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=300&auto=format&fit=crop',
-      category: 'toy',
-    },
-    {
-      id: 's4',
-      name: 'Art Set',
-      price: 65,
-      description: 'Express your creativity with a complete art kit',
-      imageUrl: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=300&auto=format&fit=crop',
-      category: 'toy',
-    },
-    {
-      id: 's5',
-      name: 'Remote Control Car',
-      price: 120,
-      description: 'Race around with this speedy RC car',
-      imageUrl: 'https://images.unsplash.com/photo-1594787318286-3d835c1d207f?q=80&w=300&auto=format&fit=crop',
-      category: 'toy',
-    },
-    {
-      id: 's6',
-      name: 'Science Kit',
-      price: 90,
-      description: 'Discover the wonders of science with fun experiments',
-      imageUrl: 'https://images.unsplash.com/photo-1532634993-15f421e42ec0?q=80&w=300&auto=format&fit=crop',
-      category: 'toy',
-    },
-    {
-      id: 's7',
-      name: 'Musical Keyboard',
-      price: 150,
-      description: 'Create beautiful music with this beginner keyboard',
-      imageUrl: 'https://images.unsplash.com/photo-1552056776-9b5657118ca4?q=80&w=300&auto=format&fit=crop',
-      category: 'toy',
-    },
-    {
-      id: 's8',
-      name: 'Puppet Theater',
-      price: 110,
-      description: 'Put on amazing shows with your own theater',
-      imageUrl: 'https://images.unsplash.com/photo-1618506557292-ec1862b3c506?q=80&w=300&auto=format&fit=crop',
-      category: 'toy',
-    },
-    {
-      id: 's9',
-      name: 'Board Game Set',
-      price: 95,
-      description: 'Hours of fun with classic board games',
-      imageUrl: 'https://images.unsplash.com/photo-1632501641765-e568d28b0015?q=80&w=300&auto=format&fit=crop',
-      category: 'toy',
-    },
-    {
-      id: 's10',
-      name: 'Magic Kit',
-      price: 80,
-      description: 'Learn amazing tricks to impress your friends',
-      imageUrl: 'https://images.unsplash.com/photo-1572507388915-99d3c1cbe324?q=80&w=300&auto=format&fit=crop',
-      category: 'toy',
-    },
-    // Pets Category
-    {
-      id: 's11',
       name: 'Virtual Cat',
       price: 120,
       description: 'A cute pet that needs your care and attention',
@@ -178,80 +126,7 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       category: 'pet',
     },
     {
-      id: 's12',
-      name: 'Virtual Dog',
-      price: 130,
-      description: 'A loyal companion who loves to play',
-      imageUrl: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    {
-      id: 's13',
-      name: 'Virtual Hamster',
-      price: 90,
-      description: 'A tiny friend who loves to explore',
-      imageUrl: 'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    {
-      id: 's14',
-      name: 'Virtual Bird',
-      price: 100,
-      description: 'A colorful bird that sings beautiful songs',
-      imageUrl: 'https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    {
-      id: 's15',
-      name: 'Virtual Fish Tank',
-      price: 150,
-      description: 'Create your own underwater world',
-      imageUrl: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    {
-      id: 's16',
-      name: 'Virtual Rabbit',
-      price: 110,
-      description: 'A fluffy friend who loves carrots',
-      imageUrl: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    {
-      id: 's17',
-      name: 'Virtual Turtle',
-      price: 95,
-      description: 'A slow but steady companion',
-      imageUrl: 'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    {
-      id: 's18',
-      name: 'Virtual Parrot',
-      price: 140,
-      description: 'A talkative friend who mimics your words',
-      imageUrl: 'https://images.unsplash.com/photo-1544181093-c712fb401bdc?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    {
-      id: 's19',
-      name: 'Virtual Guinea Pig',
-      price: 85,
-      description: 'A gentle pet who loves vegetables',
-      imageUrl: 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    {
-      id: 's20',
-      name: 'Virtual Lizard',
-      price: 115,
-      description: 'A unique pet with a cool personality',
-      imageUrl: 'https://images.unsplash.com/photo-1504450874802-0ba2bcd9b5ae?q=80&w=300&auto=format&fit=crop',
-      category: 'pet',
-    },
-    // Accessories Category
-    {
-      id: 's21',
+      id: 's4',
       name: 'Superhero Cape',
       price: 60,
       description: 'Be the hero of your own story',
@@ -259,158 +134,13 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       category: 'accessory',
     },
     {
-      id: 's22',
-      name: 'Magic Wand',
-      price: 45,
-      description: 'Cast spells and create magic',
-      imageUrl: 'https://images.unsplash.com/photo-1560942485-b2a11cc13456?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    {
-      id: 's23',
-      name: 'Crown',
-      price: 70,
-      description: 'Feel like royalty with this shiny crown',
-      imageUrl: 'https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    {
-      id: 's24',
-      name: 'Backpack',
-      price: 55,
-      description: 'Carry your adventures with style',
-      imageUrl: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    {
-      id: 's25',
-      name: 'Treasure Map',
-      price: 40,
-      description: 'Find hidden treasures in your virtual world',
-      imageUrl: 'https://images.unsplash.com/photo-1577083552431-6e5fd75a9370?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    {
-      id: 's26',
-      name: 'Wizard Hat',
-      price: 50,
-      description: 'Perfect for aspiring magicians',
-      imageUrl: 'https://images.unsplash.com/photo-1571875257727-256c39da42af?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    {
-      id: 's27',
-      name: 'Adventure Compass',
-      price: 35,
-      description: 'Never lose your way on adventures',
-      imageUrl: 'https://images.unsplash.com/photo-1533317177834-f881a2413e30?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    {
-      id: 's28',
-      name: 'Magical Amulet',
-      price: 65,
-      description: 'Wear this for good luck and protection',
-      imageUrl: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    {
-      id: 's29',
-      name: 'Explorer Belt',
-      price: 45,
-      description: 'Keep your tools handy for adventures',
-      imageUrl: 'https://images.unsplash.com/photo-1594223274512-ad4803739b7c?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    {
-      id: 's30',
-      name: 'Magic Glasses',
-      price: 55,
-      description: 'See the world in a magical way',
-      imageUrl: 'https://images.unsplash.com/photo-1577744486770-020ab432da65?q=80&w=300&auto=format&fit=crop',
-      category: 'accessory',
-    },
-    // Upgrades Category
-    {
-      id: 's31',
+      id: 's5',
       name: 'Room Upgrade',
       price: 200,
       description: 'Upgrade your virtual space with cool decorations',
       imageUrl: 'https://images.unsplash.com/photo-1521334884684-d80222895322?q=80&w=300&auto=format&fit=crop',
       category: 'upgrade',
     },
-    {
-      id: 's32',
-      name: 'Garden Expansion',
-      price: 250,
-      description: 'Add a beautiful garden to your virtual space',
-      imageUrl: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    },
-    {
-      id: 's33',
-      name: 'Library Corner',
-      price: 180,
-      description: 'Create a cozy reading nook',
-      imageUrl: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    },
-    {
-      id: 's34',
-      name: 'Art Studio',
-      price: 220,
-      description: 'A creative space for your artistic endeavors',
-      imageUrl: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    },
-    {
-      id: 's35',
-      name: 'Music Room',
-      price: 240,
-      description: 'Transform your space into a musical paradise',
-      imageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    },
-    {
-      id: 's36',
-      name: 'Science Lab',
-      price: 280,
-      description: 'Set up your own experimental laboratory',
-      imageUrl: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    },
-    {
-      id: 's37',
-      name: 'Sports Corner',
-      price: 190,
-      description: 'Create a space for your favorite sports activities',
-      imageUrl: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    },
-    {
-      id: 's38',
-      name: 'Gaming Station',
-      price: 260,
-      description: 'Ultimate setup for gaming enthusiasts',
-      imageUrl: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    },
-    {
-      id: 's39',
-      name: 'Craft Workshop',
-      price: 210,
-      description: 'Perfect space for DIY projects',
-      imageUrl: 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    },
-    {
-      id: 's40',
-      name: 'Observatory Deck',
-      price: 300,
-      description: 'Watch the stars from your own observatory',
-      imageUrl: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=300&auto=format&fit=crop',
-      category: 'upgrade',
-    }
   ]);
 
   
@@ -532,6 +262,15 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       title: "Goal Added!",
       description: `You've added a new savings goal: ${goal.name}.`,
     });
+  };
+
+  const addTask = (task: Omit<Task, 'id' | 'completed'>) => {
+    const newTask: Task = {
+      ...task,
+      id: Math.random().toString(36).substr(2, 9),
+      completed: false,
+    };
+    setTasks([...tasks, newTask]);
   };
 
   // Update a savings goal
@@ -731,20 +470,6 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     localStorage.setItem('kiddo-tasks', JSON.stringify(tasks));
   }, [tasks]);
-
-  // Add a new task
-  const addTask = (task: Omit<Task, 'id' | 'completed'>) => {
-    const newTask: Task = {
-      ...task,
-      id: Date.now().toString(),
-      completed: false,
-    };
-    setTasks((prev) => [...prev, newTask]);
-    toast({
-      title: "Task Added!",
-      description: `New task "${task.name}" has been added.`,
-    });
-  };
 
   return (
     <BudgetContext.Provider
