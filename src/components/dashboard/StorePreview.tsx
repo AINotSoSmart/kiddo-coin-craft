@@ -27,7 +27,7 @@ const StorePreview = () => {
             <ShoppingCart className="h-6 w-6" />
             <span className="text-xl" style={{ transform: "rotate(-2deg)" }}>Fun Shop</span>
           </div>
-          <Button variant="secondary" size="sm" asChild>
+          <Button variant="secondary" size="sm" asChild className="doodle-button">
             <Link to="/store">View All</Link>
           </Button>
         </CardTitle>
@@ -64,7 +64,7 @@ const StorePreview = () => {
                     size="sm" 
                   />
                 </div>
-                <Button size="sm" variant="outline" asChild className="bg-white/50 hover:bg-white/70">
+                <Button size="sm" variant="outline" asChild className="doodle-button bg-white/50 hover:bg-white/70">
                   <Link to={`/store?item=${item.id}`}>
                     View
                   </Link>

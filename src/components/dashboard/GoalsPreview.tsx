@@ -12,13 +12,13 @@ const GoalsPreview = () => {
 
   return (
     <Card className="overflow-hidden border-2 border-black border-dashed bg-white">
-      <CardHeader className="bg-[#FFE6EA] p-5 border-b-2 border-black border-dashed">
+      <CardHeader className="bg-[#E5DEFF] p-5 border-b-2 border-black border-dashed">
         <CardTitle className="flex items-center justify-between text-black font-normal" style={{ fontFamily: "'Comic Sans MS', cursive" }}>
           <div className="flex items-center gap-2">
             <Target className="h-6 w-6" />
             <span className="text-xl" style={{ transform: "rotate(-2deg)" }}>Savings Goals</span>
           </div>
-          <Button variant="secondary" size="sm" asChild>
+          <Button variant="secondary" size="sm" asChild className="doodle-button">
             <Link to="/goals">View All</Link>
           </Button>
         </CardTitle>
@@ -28,7 +28,7 @@ const GoalsPreview = () => {
           <div className="text-center p-6">
             <Target className="h-16 w-16 mx-auto text-kid-yellow mb-2 animate-float" />
             <p className="text-black text-sm" style={{ fontFamily: "'Comic Sans MS', cursive" }}>No savings goals yet.</p>
-            <Button className="mt-4 bg-kid-green hover:bg-kid-green/90" asChild>
+            <Button className="mt-4 bg-kid-green hover:bg-kid-green/90 doodle-button" asChild>
               <Link to="/goals">Create a Goal</Link>
             </Button>
           </div>
@@ -39,10 +39,12 @@ const GoalsPreview = () => {
                 <h3 className="font-medium" style={{ fontFamily: "'Comic Sans MS', cursive" }}>{goal.name}</h3>
                 <CoinDisplay amount={goal.currentAmount} size="sm" />
               </div>
-              <Progress 
-                value={(goal.currentAmount / goal.targetAmount) * 100} 
-                className="h-2 bg-[#f1f1f1] border border-black"
-              />
+              <div className="doodle-progress">
+                <div 
+                  className="doodle-progress-bar" 
+                  style={{ width: `${(goal.currentAmount / goal.targetAmount) * 100}%` }}
+                ></div>
+              </div>
               <div className="flex justify-between text-xs text-black" style={{ fontFamily: "'Comic Sans MS', cursive" }}>
                 <span>
                   {Math.round((goal.currentAmount / goal.targetAmount) * 100)}% complete

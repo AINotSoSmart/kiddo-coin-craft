@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -100,7 +101,9 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
     }
   ]});
 
-  const [storeItems, setStoreItems] = useState<StoreItem[]>([
+  const [storeItems, setStoreItems] = useState<StoreItem[]>(() => {
+    const saved = localStorage.getItem('kiddo-store-items');
+    return saved ? JSON.parse(saved) : [
     {
       id: 's1',
       name: 'Teddy Bear',
@@ -141,7 +144,47 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
       imageUrl: 'https://images.unsplash.com/photo-1521334884684-d80222895322?q=80&w=300&auto=format&fit=crop',
       category: 'upgrade',
     },
-  ]);
+    {
+      id: 's6',
+      name: 'Virtual Dog',
+      price: 150,
+      description: 'A loyal companion that follows you everywhere',
+      imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=300&auto=format&fit=crop',
+      category: 'pet',
+    },
+    {
+      id: 's7',
+      name: 'Magic Wand',
+      price: 85,
+      description: 'Cast spells and create magical effects in your room',
+      imageUrl: 'https://images.unsplash.com/photo-1618329075618-0d7add8b1ef2?q=80&w=300&auto=format&fit=crop',
+      category: 'toy',
+    },
+    {
+      id: 's8',
+      name: 'Digital Skateboard',
+      price: 110,
+      description: 'Ride around your virtual world in style',
+      imageUrl: 'https://images.unsplash.com/photo-1547447134-cd3f5c716030?q=80&w=300&auto=format&fit=crop',
+      category: 'toy',
+    },
+    {
+      id: 's9',
+      name: 'Star Projector',
+      price: 70,
+      description: 'Fill your room with stars and galaxies',
+      imageUrl: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=300&auto=format&fit=crop',
+      category: 'accessory',
+    },
+    {
+      id: 's10',
+      name: 'Garden Upgrade',
+      price: 180,
+      description: 'Add a beautiful garden to your virtual space',
+      imageUrl: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=300&auto=format&fit=crop',
+      category: 'upgrade',
+    }
+  ]});
 
   
   const [tasks, setTasks] = useState<Task[]>(() => {
@@ -470,6 +513,10 @@ export const BudgetProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     localStorage.setItem('kiddo-tasks', JSON.stringify(tasks));
   }, [tasks]);
+
+  useEffect(() => {
+    localStorage.setItem('kiddo-store-items', JSON.stringify(storeItems));
+  }, [storeItems]);
 
   return (
     <BudgetContext.Provider

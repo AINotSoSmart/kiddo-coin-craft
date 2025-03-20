@@ -220,6 +220,29 @@
     filter: drop-shadow(2px 2px 0 #000);
   }
 
+  /* Add 3D button effects */
+  .button-3d {
+    @apply relative bg-white border-2 border-black border-dashed;
+    transform-style: preserve-3d;
+    transition: transform 150ms, box-shadow 150ms;
+  }
+  
+  .button-3d::before {
+    content: '';
+    @apply absolute w-full h-full bg-black rounded-lg -z-10;
+    transform: translateZ(-4px);
+    top: 6px;
+    left: 6px;
+  }
+  
+  .button-3d:hover {
+    transform: translateZ(8px);
+  }
+  
+  .button-3d:active {
+    transform: translateZ(2px);
+  }
+
   @keyframes welcome-bounce {
     0%, 100% { transform: translateY(0) rotate(-2deg); }
     50% { transform: translateY(-8px) rotate(2deg); }
@@ -229,6 +252,23 @@
     0%, 100% { transform: rotate(-5deg) scale(1.05); }
     50% { transform: rotate(5deg) scale(0.95); }
   }
+  
+  /* Add animation for the mobile menu items */
+  .mobile-menu-item {
+    @apply transition-all duration-300;
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  
+  .mobile-menu-item.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .mobile-menu-item:nth-child(1) { transition-delay: 0.1s; }
+  .mobile-menu-item:nth-child(2) { transition-delay: 0.2s; }
+  .mobile-menu-item:nth-child(3) { transition-delay: 0.3s; }
+  .mobile-menu-item:nth-child(4) { transition-delay: 0.4s; }
 }
 
 @keyframes float {
@@ -239,4 +279,30 @@
   animation: float 2s ease-in-out infinite;
   display: inline-block;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.animate-pulse-scale {
+  animation: pulse-scale 2s ease-in-out infinite;
+}
+
+@keyframes bounce-once {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+.animate-bounce-once {
+  animation: bounce-once 1s forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop {
+  animation: pop 0.5s forwards ease-out;
 }
