@@ -5,7 +5,7 @@ import { useBudget } from "@/context/BudgetContext";
 import CoinDisplay from "@/components/shared/CoinDisplay";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { PlusCircle, Target, Trash2, PiggyBank } from "lucide-react";
+import { PlusCircle, Trash2, PiggyBank } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -39,7 +39,9 @@ const Goals = () => {
   const [contributionAmount, setContributionAmount] = useState<string>("10");
   const [newGoalData, setNewGoalData] = useState({
     name: "",
+    description: "",
     targetAmount: "",
+    currentAmount: 0,
     imageUrl: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?q=80&w=300&auto=format&fit=crop",
   });
   const [isAddingGoal, setIsAddingGoal] = useState(false);
@@ -82,14 +84,18 @@ const Goals = () => {
     
     addSavingsGoal({
       name: newGoalData.name,
+      description: newGoalData.description || "My savings goal",
       targetAmount,
+      currentAmount: 0,
       imageUrl: newGoalData.imageUrl,
     });
     
     // Reset form
     setNewGoalData({
       name: "",
+      description: "",
       targetAmount: "",
+      currentAmount: 0,
       imageUrl: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?q=80&w=300&auto=format&fit=crop",
     });
     setIsAddingGoal(false);

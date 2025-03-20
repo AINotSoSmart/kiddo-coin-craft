@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { getItem, saveItem, STORAGE_KEYS } from '@/services/localStorage';
 
@@ -18,6 +17,9 @@ export interface Challenge {
   reward: number;
   completed: boolean;
   endDate: string;
+  deadline?: string;
+  currentAmount?: number;
+  targetAmount?: number;
 }
 
 export interface SavingsGoal {
@@ -292,7 +294,8 @@ export const useLocalBudget = () => {
     const newGoal: SavingsGoal = {
       ...goal,
       id: `goal-${Date.now()}`,
-      currentAmount: 0,
+      currentAmount: goal.currentAmount || 0,
+      description: goal.description || '',
     };
     
     setSavingsGoals(prev => [...prev, newGoal]);
@@ -382,6 +385,39 @@ export const useLocalBudget = () => {
     return newChallenge;
   };
 
+  // Reset task (make it available again)
+  const resetTask = (taskId: string) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        return { ...task, completed: false };
+      }
+      return task;
+    });
+    
+    setTasks(updatedTasks);
+  };
+
+  // Remove a savings goal
+  const removeSavingsGoal = (goalId: string) => {
+    setSavingsGoals(prev => prev.filter(goal => goal.id !== goalId));
+  };
+
+  // Add to balance manually (for parent controls)
+  const addBalance = (amount: number) => {
+    if (amount > 0) {
+      // Add transaction record
+      addTransaction({
+        id: `tx-${Date.now()}`,
+        type: 'income',
+        amount: amount,
+        description: `Manual addition by parent`,
+        date: new Date().toISOString(),
+      });
+      
+      setBalance(prev => prev + amount);
+    }
+  };
+
   return {
     balance,
     tasks,
@@ -397,6 +433,9 @@ export const useLocalBudget = () => {
     isItemOwned,
     addTask,
     addChallenge,
-    setBalance, // For parent settings
+    setBalance,
+    resetTask,
+    removeSavingsGoal,
+    addBalance,
   };
 };
