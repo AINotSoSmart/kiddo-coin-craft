@@ -18,7 +18,7 @@ const GoalsPreview = () => {
             <Target className="h-6 w-6" />
             <span className="text-xl" style={{ transform: "rotate(-2deg)" }}>Savings Goals</span>
           </div>
-          <Button variant="secondary" size="sm" asChild className="doodle-button">
+          <Button variant="secondary" size="sm" asChild>
             <Link to="/goals">View All</Link>
           </Button>
         </CardTitle>
@@ -28,7 +28,7 @@ const GoalsPreview = () => {
           <div className="text-center p-6">
             <Target className="h-16 w-16 mx-auto text-kid-yellow mb-2 animate-float" />
             <p className="text-black text-sm" style={{ fontFamily: "'Comic Sans MS', cursive" }}>No savings goals yet.</p>
-            <Button className="mt-4 bg-kid-green hover:bg-kid-green/90 doodle-button" asChild>
+            <Button className="mt-4 bg-kid-green hover:bg-kid-green/90" asChild>
               <Link to="/goals">Create a Goal</Link>
             </Button>
           </div>

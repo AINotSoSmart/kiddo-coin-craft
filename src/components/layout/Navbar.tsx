@@ -17,44 +17,43 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  // Define the nav items
+  const navItems = [
+    { icon: BadgeDollarSign, title: "Dashboard", path: "/" },
+    { icon: ShoppingCart, title: "Store", path: "/store" },
+    { icon: Target, title: "Goals", path: "/goals" },
+    { icon: Settings, title: "Parent Settings", path: "/parent" }
+  ];
+
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b-2 border-black border-dashed py-2 px-4 relative">
+    <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b-2 border-black border-dashed py-2 px-4 relative">
       <div className="container flex justify-between items-center relative z-20">
         <AnimatedLogo />
         
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-1">
-          <Button variant="ghost" asChild className={location.pathname === "/" ? "bg-[#FEF7CD]/50" : ""}>
-            <Link to="/" className="flex items-center gap-2">
-              <BadgeDollarSign className="h-5 w-5" />
-              <span>Dashboard</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" asChild className={location.pathname === "/store" ? "bg-[#FEF7CD]/50" : ""}>
-            <Link to="/store" className="flex items-center gap-2">
-              <ShoppingCart className="h-5 w-5" />
-              <span>Store</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" asChild className={location.pathname === "/goals" ? "bg-[#FEF7CD]/50" : ""}>
-            <Link to="/goals" className="flex items-center gap-2">
-              <Target className="h-5 w-5" />
-              <span>Goals</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" asChild className={location.pathname === "/parent" ? "bg-[#FEF7CD]/50" : ""}>
-            <Link to="/parent" className="flex items-center gap-2">
-              <Settings className="h-5 w-5" />
-              <span>Parent Settings</span>
-            </Link>
-          </Button>
+          {navItems.map((item) => (
+            <Button 
+              key={item.path}
+              variant="ghost" 
+              asChild 
+              className={location.pathname === item.path ? "bg-[#FEF7CD]/50" : ""}
+            >
+              <Link to={item.path} className="flex items-center gap-2">
+                <item.icon className="h-5 w-5" />
+                <span>{item.title}</span>
+              </Link>
+            </Button>
+          ))}
         </div>
         
+        {/* Mobile Menu Trigger */}
         <div className="flex md:hidden">
           <Button
             variant="outline"
             size="icon"
             onClick={toggleMenu}
-            className="doodle-button rounded-full border-2 border-black border-dashed"
+            className="rounded-full border-2 border-black border-dashed before:rounded-full"
           >
             {isOpen ? (
               <X className="h-5 w-5" />
@@ -72,40 +71,24 @@ const Navbar = () => {
           )}
         >
           {/* Menu Content */}
-          <div className="h-[calc(100vh-60px)] flex items-center justify-center bg-white">
-            <div className="flex flex-col items-center space-y-8 w-full px-6">
-              <Link 
-                to="/" 
-                className={`flex items-center gap-2 text-xl [font-family:'Comic_Sans_MS',cursive] hover:text-kid-teal transition-colors w-full justify-center py-4 doodle-button ${location.pathname === "/" ? "bg-[#FEF7CD]" : "bg-white/90"}`}
-                onClick={toggleMenu}
-              >
-                <BadgeDollarSign className="h-6 w-6" />
-                <span>Dashboard</span>
-              </Link>
-              <Link 
-                to="/store" 
-                className={`flex items-center gap-2 text-xl [font-family:'Comic_Sans_MS',cursive] hover:text-kid-teal transition-colors w-full justify-center py-4 doodle-button ${location.pathname === "/store" ? "bg-[#FEF7CD]" : "bg-white/90"}`}
-                onClick={toggleMenu}
-              >
-                <ShoppingCart className="h-6 w-6" />
-                <span>Store</span>
-              </Link>
-              <Link 
-                to="/goals" 
-                className={`flex items-center gap-2 text-xl [font-family:'Comic_Sans_MS',cursive] hover:text-kid-teal transition-colors w-full justify-center py-4 doodle-button ${location.pathname === "/goals" ? "bg-[#FEF7CD]" : "bg-white/90"}`}
-                onClick={toggleMenu}
-              >
-                <Target className="h-6 w-6" />
-                <span>Goals</span>
-              </Link>
-              <Link 
-                to="/parent" 
-                className={`flex items-center gap-2 text-xl [font-family:'Comic_Sans_MS',cursive] hover:text-kid-teal transition-colors w-full justify-center py-4 doodle-button ${location.pathname === "/parent" ? "bg-[#FEF7CD]" : "bg-white/90"}`}
-                onClick={toggleMenu}
-              >
-                <Settings className="h-6 w-6" />
-                <span>Parent Settings</span>
-              </Link>
+          <div className="h-[calc(100vh-60px)] flex flex-col items-center justify-start py-8 bg-white overflow-y-auto">
+            <div className="flex flex-col items-center space-y-4 w-full px-6">
+              {navItems.map((item, index) => (
+                <Link 
+                  key={item.path}
+                  to={item.path} 
+                  className={`flex items-center gap-3 text-xl [font-family:'Comic_Sans_MS',cursive] hover:text-kid-teal transition-colors w-full justify-center py-4 ${
+                    location.pathname === item.path 
+                      ? "bg-[#FEF7CD] border-2 border-black border-dashed rounded-lg" 
+                      : "bg-white/90 border-2 border-black border-dashed rounded-lg"
+                  } transform transition-all duration-300 before:content-[''] before:absolute before:w-full before:h-full before:bg-black/20 before:rounded-lg before:-z-10 before:translate-x-[5px] before:translate-y-[5px]`}
+                  onClick={toggleMenu}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <item.icon className="h-6 w-6" />
+                  <span>{item.title}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
